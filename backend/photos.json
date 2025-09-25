@@ -52,19 +52,6 @@
     "updatedAt": "2025-09-21T08:53:49.291Z"
   },
   {
-    "id": "49ad61b5-2c2b-4238-8226-b81b74c427ab",
-    "name": "亲亲",
-    "category": "phd_students",
-    "subCategory": null,
-    "grade": "2025",
-    "filename": "1758461772276-270020029.jpg",
-    "originalName": "2135.jpg_wh300.jpg",
-    "filePath": "D:\\work\\308_photo\\backend\\public\\phd_students\\1758461772276-270020029.jpg",
-    "url": "/uploads/phd_students/1758461772276-270020029.jpg",
-    "uploadDate": "2025-09-21T13:36:12.279Z",
-    "updatedAt": "2025-09-21T13:36:12.279Z"
-  },
-  {
     "id": "294cc5ca-e627-4d07-9a0c-c3546a1fee29",
     "name": "飞扬",
     "category": "phd_students",
@@ -124,53 +111,5 @@
     "url": "/uploads/phd_students/2018/1758464011606-68730704.jpg",
     "uploadDate": "2025-09-21T14:13:31.617Z",
     "updatedAt": "2025-09-21T14:13:31.617Z"
-  },
-  {
-    "id": "bd3f5e49-9e44-44c5-aa8b-7b67df498e99",
-    "name": "飞飞",
-    "description": "",
-    "location": "",
-    "photoDate": "",
-    "category": "master_students",
-    "subCategory": null,
-    "grade": "2025",
-    "filename": "1758468105608-98245050.png",
-    "originalName": "6.png",
-    "filePath": "D:\\work\\308_photo\\backend\\public\\master_students\\2025\\1758468105608-98245050.png",
-    "url": "/uploads/master_students/2025/1758468105608-98245050.png",
-    "uploadDate": "2025-09-21T15:21:45.641Z",
-    "updatedAt": "2025-09-21T15:21:45.641Z"
-  },
-  {
-    "id": "17204533-19d8-41d3-8039-20c099376ff7",
-    "name": "弟弟",
-    "description": "",
-    "location": "",
-    "photoDate": "",
-    "category": "phd_students",
-    "subCategory": null,
-    "grade": "2026级",
-    "filename": "1758473867598-359202800.jpg",
-    "originalName": "2.jpg",
-    "filePath": "D:\\work\\308_photo\\backend\\public\\phd_students\\2026级\\1758473867598-359202800.jpg",
-    "url": "/uploads/phd_students/2026级/1758473867598-359202800.jpg",
-    "uploadDate": "2025-09-21T16:57:47.603Z",
-    "updatedAt": "2025-09-21T16:57:47.603Z"
-  },
-  {
-    "id": "c937cb81-f031-467c-9997-9de8267d5543",
-    "name": "晨晨",
-    "description": "",
-    "location": "",
-    "photoDate": "",
-    "category": "phd_students",
-    "subCategory": null,
-    "grade": "2026",
-    "filename": "1758473905637-419234534.png",
-    "originalName": "3.png",
-    "filePath": "D:\\work\\308_photo\\backend\\public\\phd_students\\2026\\1758473905637-419234534.png",
-    "url": "/uploads/phd_students/2026/1758473905637-419234534.png",
-    "uploadDate": "2025-09-21T16:58:25.644Z",
-    "updatedAt": "2025-09-21T16:58:25.644Z"
   }
 ]

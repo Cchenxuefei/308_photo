@@ -53,13 +53,13 @@ const PhotoModal = ({ open, onClose, photo, onUpdate, onDelete }) => {
       };
 
       const response = await axios.put(`/api/photos/${photo.id}`, updatedData);
-      
-      if (response.data.success) {
-        setMessage({ type: 'success', text: '照片信息已成功更新！' });
-        setIsEditing(false);
-        onUpdate({ ...photo, ...updatedData });
-        setTimeout(() => setMessage(null), 3000);
-      }
+      // 后端返回的是更新后的照片对象，不包含 success 字段
+      const updatedPhoto = response.data;
+
+      setMessage({ type: 'success', text: '照片信息已成功更新！' });
+      setIsEditing(false);
+      onUpdate(updatedPhoto);
+      setTimeout(() => setMessage(null), 3000);
     } catch (error) {
       console.error('更新照片信息失败:', error);
       setMessage({ type: 'error', text: '更新失败，请重试' });
@@ -91,14 +91,11 @@ const PhotoModal = ({ open, onClose, photo, onUpdate, onDelete }) => {
     if (window.confirm('确定要删除这张照片吗？此操作不可撤销。')) {
       setLoading(true);
       try {
-        const response = await axios.delete(`/api/photos/${photo.id}`);
-        if (response.data.success) {
-          setMessage({ type: 'success', text: '照片已成功删除！' });
-          setTimeout(() => {
-            onDelete(photo.id);
-            onClose();
-          }, 1000);
-        }
+        await axios.delete(`/api/photos/${photo.id}`);
+        // 后端返回 { message: '照片删除成功' }，不包含 success 字段，直接本地更新列表即可
+        setMessage({ type: 'success', text: '照片已成功删除！' });
+        onDelete(photo.id);
+        onClose();
       } catch (error) {
         console.error('删除照片失败:', error);
         setMessage({ type: 'error', text: '删除失败，请重试' });

@@ -1,0 +1,36 @@
+一、只更新后端（API/逻辑）
+- 1) 拉取仓库最新代码
+  - cd /home/user/308_photos/repo
+  - git pull
+- 2) 同步后端改动到线上目录（不要动数据与上传目录）
+  - 若只改了单个文件：把 <mcfile name="server.js" path="/home/user/308_photos/repo/backend/server.js"></mcfile> 复制到 <mcfile name="server.js" path="/home/user/308_photos/backend/server.js"></mcfile>
+  - 若改动较多：rsync -a /home/user/308_photos/repo/backend/ /home/user/308_photos/backend/ --exclude 'photos.json' --exclude 'public/'
+  - 如仅依赖文件改动：把 <mcfile name="package.json" path="/home/user/308_photos/repo/backend/package.json"></mcfile> 和 <mcfile name="package-lock.json" path="/home/user/308_photos/repo/backend/package-lock.json"></mcfile> 覆盖到 <mcfile name="package.json" path="/home/user/308_photos/backend/package.json"></mcfile>、<mcfile name="package-lock.json" path="/home/user/308_photos/backend/package-lock.json"></mcfile>
+- 3) 安装依赖（仅当 package.json/lock 变化时）
+  - cd /home/user/308_photos/backend
+  - npm ci（失败再用 npm install）
+- 4) 平滑重启并验证
+  - pm2 reload photos-backend（或 pm2 restart photos-backend）
+  - pm2 logs photos-backend --lines 20（应看到“Server is running on http://localhost:3001”）
+  - 可选 API 探活：curl -sS http://localhost:3001/api/photos | head -c 200
+- 重要提醒
+  - 不要覆盖 <mcfile name="photos.json" path="/home/user/308_photos/backend/photos.json"></mcfile> 和 <mcfile name="public" path="/home/user/308_photos/backend/public/"></mcfile>
+
+二、只更新前端（界面/资源）
+- 1) 拉取仓库最新代码
+  - cd /home/user/308_photos/repo
+  - git pull
+- 2) 安装并构建
+  - cd /home/user/308_photos/repo/frontend
+  - npm ci（失败再用 npm install）
+  - npm run build（产物在 repo/frontend/build/，主页前缀为 /photos，见 <mcfile name="index.html" path="/home/user/308_photos/repo/frontend/build/index.html"></mcfile>）
+- 3) 部署构建产物（按你的站点根二选一）
+  - Nginx 在 /var/www/308_photos/frontend_build：rsync -a --delete /home/user/308_photos/repo/frontend/build/ /var/www/308_photos/frontend_build/
+  - Nginx 在 /home/user/308_photos/frontend_build：rsync -a --delete /home/user/308_photos/repo/frontend/build/ /home/user/308_photos/frontend_build/
+- 4) 验证静态资源
+  - curl -I http://localhost/photos/
+  - curl -I http://localhost/photos/static/js/main.*.js
+  - 若浏览器不更新，强制刷新或清缓存
+
+
+        
