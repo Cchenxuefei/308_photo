@@ -182,7 +182,7 @@ const Home = () => {
           关于我们的实验室
         </Typography>
         <Typography variant="body1" paragraph sx={{ lineHeight: 1.8, textAlign: 'center', maxWidth: '800px', mx: 'auto' }}>
-          我们是一个充满活力的科研团队，致力于前沿技术研究与创新。每一张照片都记录着我们共同成长的足迹。
+          我们是一个充满活力的科研团队，致力于小麦生物育种研究。每一张照片都记录着我们共同成长的足迹。
         </Typography>
       </Paper>
     </Container>
